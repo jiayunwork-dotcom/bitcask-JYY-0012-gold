@@ -70,11 +70,7 @@ func (rd *Reader) Next() (*Entry, error) {
 
 	key := body[:h.keyLen]
 	value := body[h.keyLen:]
-	size := int64(4 + headerSize + payloadLen + 4)
-
-	if _, err := io.CopyN(io.Discard, rd.r, 4); err != nil && err != io.EOF {
-		return nil, err
-	}
+	size := int64(4 + headerSize + payloadLen)
 
 	rd.pos = offset + size
 	return &Entry{

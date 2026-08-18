@@ -135,5 +135,5 @@ func Decode(data []byte) (*Entry, error) {
 // frameSize returns the on-disk size of the frame for a record with the given
 // key/value lengths without allocating the full buffer.
 func frameSize(keyLen, valueLen int) int64 {
-	return int64(4 + headerSize + keyLen + valueLen + 4)
+	return int64(4 + headerSize + keyLen + valueLen)
 }
